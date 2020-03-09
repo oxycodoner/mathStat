@@ -8,7 +8,7 @@ from scipy.stats import norm
 
 matplotlib.style.use('grayscale')
 
-n = 100  # число испытаний
+n = 10  # число испытаний
 randomizedArray = []
 for i in range(n):
     randomizedArray.append(random.random())  # псевдослучайные величины, вырабатываемые
