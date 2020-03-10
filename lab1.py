@@ -8,7 +8,7 @@ from scipy.stats import norm
 
 matplotlib.style.use('grayscale')
 
-n = 10  # число испытаний
+n = 100  # число испытаний
 randomizedArray = []
 for i in range(n):
     randomizedArray.append(random.random())  # псевдослучайные величины, вырабатываемые
@@ -49,34 +49,34 @@ str_ = 'Коррелограмма, N = ' + str(n)
 plt.xlabel(str_)
 plt.show()
 
-# интегральная функция распределения
+# функция распределения
 minV = 0.0
 maxV = 1.0
 numOfParts = 100
 delta = (maxV - minV) / (numOfParts)
-fun = [0 for i in range(numOfParts)]
+function = [0 for i in range(numOfParts)]
 for i in range(numOfParts):
     for j in randomizedArray:
         if (minV + delta * i) <= j < (minV + delta * (i + 1)):
-            fun[i] += 1
+            function[i] += 1
 for i in range(numOfParts):
-    fun[i] /= n
-distribFun = [0 for i in range(numOfParts)]
+    function[i] /= n
+distributionFunction = [0 for i in range(numOfParts)]
 for i in range(numOfParts):
     for j in range(i, -1, -1):
-        distribFun[i] += fun[j]
+        distributionFunction[i] += function[j]
 for i in range(numOfParts):
-    plt.bar((minV + delta * i) + delta / 2, distribFun[i], width=delta)
+    plt.bar((minV + delta * i) + delta / 2, distributionFunction[i], width=delta)
 
-str_ = 'Функция распределения, N = ' + str(n)
-plt.xlabel(str_)
+plt.xlabel("Функция распределения, N = " + str(n))
 plt.show()
 
-s = pd.Series(randomizedArray)  # график функции плотности распределения
+s = pd.Series(randomizedArray)  # функция плотности распределения
 s.plot.hist()
-str_ = 'Функция плотности, N = ' + str(n)
-plt.xlabel(str_)
+plt.xlabel("Функция плотности, N = " + str(n))
 plt.show()
 
+function.clear()
+distributionFunction.clear()
 randomizedArray.clear()
 korr.clear()
