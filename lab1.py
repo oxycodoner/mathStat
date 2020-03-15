@@ -1,10 +1,8 @@
-import numpy as np
 import random
 import math
 import matplotlib.pyplot as plt
 import matplotlib
 import pandas as pd
-from scipy.stats import norm
 
 matplotlib.style.use('grayscale')
 
@@ -45,8 +43,7 @@ for f in range(1, n):  # коэффициенты корреляции
 x = range(len(korr))
 ax = plt.gca()
 ax.bar(x, korr, align='edge')
-str_ = 'Коррелограмма, N = ' + str(n)
-plt.xlabel(str_)
+plt.xlabel("Коррелограмма, N = " + str(n))
 plt.show()
 
 # функция распределения
