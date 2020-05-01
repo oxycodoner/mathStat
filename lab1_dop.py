@@ -38,15 +38,15 @@ def monotonicity_check(sample, direction: Direction):
     exp = np.array([((1 / math.factorial(i)) - (1 / math.factorial(i + 1))) * sum_v for i in range(1, len(v) + 1)])
     print(v)
     print(len(v) - 1)
+    print(exp)
     return chisquare(v, exp)
 
 
 n = 1000  # число испытаний
 randomizedArray = []
 for i in range(n):
-    randomizedArray.append(random.random())  # псевдослучайные величины, вырабатываемые
-    # датчиком случайных чисел
-print(randomizedArray)
+    randomizedArray.append(random.random())
+
 
 print(monotonicity_check(randomizedArray, Direction.not_up))
 print(monotonicity_check(randomizedArray, Direction.not_down))
